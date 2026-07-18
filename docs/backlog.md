@@ -11,7 +11,7 @@ Initialize monorepo: license, README, changelog, contributing, security policy,
 `.env.example`, gitignore, directory structure.
 **Acceptance:** repo clones clean; standards files present; no secrets.
 
-### ECONOS-002 — Design system and application shell `in-progress`
+### ECONOS-002 — Design system and application shell `done`
 Next.js App Router app with strict TypeScript and Tailwind; design tokens
 (premium neutral palette, typographic scale); global navigation (Overview,
 Inflation, Labor, Housing, Research, Forecasts, Simulator, Data, About); footer
@@ -21,13 +21,13 @@ overflow; keyboard-navigable; typecheck passes.
 
 ## Phase 2 — Data platform
 
-### ECONOS-003 — Data-source registry `in-progress`
+### ECONOS-003 — Data-source registry `done`
 `data/metadata/series_registry.json`: every series with internal name, display
 name, source, original identifier, source URL, frequency, unit, seasonal
 adjustment, geography, transformation, license, limitations.
 **Acceptance:** registry validates against schema; app reads catalog from it.
 
-### ECONOS-004 — FRED ingestion pipeline `in-progress`
+### ECONOS-004 — FRED ingestion pipeline `done`
 Keyless retrieval via `fredgraph.csv`; per-series JSON snapshots with retrieval
 date and latest-observation date; failure handling preserves last validated
 snapshot and marks staleness.
@@ -44,14 +44,14 @@ Direct BEA regional accounts for the regional module. v1.0 uses BEA-originated
 national series mirrored on FRED; direct BEA API ingestion ships with the
 regional module.
 
-### ECONOS-007 — Data validation framework `in-progress`
+### ECONOS-007 — Data validation framework `done`
 Schema checks, type checks, duplicate/missing detection, date continuity,
 allowed ranges, output row counts; runs in CI.
 **Acceptance:** validation fails the build on violation; all checks documented.
 
 ## Phase 3 — Observatory
 
-### ECONOS-008 — Economic overview `todo`
+### ECONOS-008 — Economic overview `done`
 Curated scorecard: real GDP growth, CPI, core CPI, unemployment, payrolls,
 participation, wage growth, fed funds, 10Y yield, yield curve spread, mortgage
 rate, consumer sentiment, retail sales, housing starts, industrial production.
@@ -60,15 +60,15 @@ definition, interpretation.
 **Acceptance:** all values from committed snapshots; no ambiguous good/bad
 coloring; freshness visible.
 
-### ECONOS-009 — Inflation and purchasing-power module `todo`
+### ECONOS-009 — Inflation and purchasing-power module `done`
 Headline vs core CPI, category breakdown, wage-vs-price comparison, real wage
 trend, household purchasing-power calculator.
 
-### ECONOS-010 — Labor market module `todo`
+### ECONOS-010 — Labor market module `done`
 Unemployment, participation, payrolls, openings, quits, hires, claims, wage
 growth; labor-market tightness (V/U); Beveridge Curve view.
 
-### ECONOS-011 — Housing affordability module `todo`
+### ECONOS-011 — Housing affordability module `done`
 Mortgage rates, prices, income, permits, starts, sales; documented Housing
 Affordability Index; mortgage-payment calculator; rate sensitivity.
 
@@ -86,30 +86,30 @@ documented methodology.
 
 ## Phase 4 — Research Lab
 
-### ECONOS-015 — Research Lab framework `todo`
+### ECONOS-015 — Research Lab framework `done`
 Module template: question, theory, variables, sources, method, findings,
 uncertainty, limitations, code reference.
 
-### ECONOS-016 — Okun's Law study `todo`
-### ECONOS-017 — Beveridge Curve study `todo`
-### ECONOS-018 — Real wage study `todo`
-### ECONOS-019 — Interest-rate transmission research `todo`
+### ECONOS-016 — Okun's Law study `done`
+### ECONOS-017 — Beveridge Curve study `done`
+### ECONOS-018 — Real wage study `done`
+### ECONOS-019 — Interest-rate transmission research `done`
 
 ## Phase 5 — Forecast Center
 
-### ECONOS-020 — Forecasting framework `todo`
+### ECONOS-020 — Forecasting framework `done`
 Rolling-origin backtesting harness; MAE/RMSE/directional accuracy; interval
 coverage; JSON forecast artifacts with model version and training window.
 
-### ECONOS-021 — Inflation forecast `todo`
-### ECONOS-022 — Unemployment forecast `todo`
-### ECONOS-023 — Payroll growth forecast `todo`
-### ECONOS-024 — Forecast evaluation interface `todo`
+### ECONOS-021 — Inflation forecast `done`
+### ECONOS-022 — Unemployment forecast `done`
+### ECONOS-023 — Payroll growth forecast `done`
+### ECONOS-024 — Forecast evaluation interface `done`
 Fan charts, baseline-vs-model tables, backtest history, limitations.
 
 ## Phase 6 — Transmission Engine
 
-### ECONOS-025 — Interest-rate scenario engine `todo`
+### ECONOS-025 — Interest-rate scenario engine `done`
 Controls: starting rate, rate change, horizon, mortgage amount, term. Outputs:
 payment impact (direct calculation), affordability change, housing activity,
 construction, employment, spending effects (historical associations) with
@@ -117,8 +117,8 @@ uncertainty ranges and provenance labels.
 
 ## Phase 7 — Hardening and content
 
-### ECONOS-026 — Methodology and data center `todo`
-### ECONOS-027 — About Jean-Luc `todo`
+### ECONOS-026 — Methodology and data center `done`
+### ECONOS-027 — About Jean-Luc `done`
 ### ECONOS-028 — Accessibility audit `todo`
 ### ECONOS-029 — Performance audit `todo`
 ### ECONOS-030 — Documentation completion `todo`
