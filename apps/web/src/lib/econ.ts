@@ -31,20 +31,52 @@ export function previous(
   return index >= 0 ? observations[index] : null;
 }
 
+/** Whole months between two first-of-period ISO dates. */
+function monthsBetween(earlierIso: string, laterIso: string): number {
+  const [y1, m1] = earlierIso.split("-").map(Number);
+  const [y2, m2] = laterIso.split("-").map(Number);
+  return (y2 - y1) * 12 + (m2 - m1);
+}
+
+/** Shift a first-of-period ISO date by a signed number of months. */
+function shiftMonths(isoDate: string, months: number): string {
+  const [year, month] = isoDate.split("-").map(Number);
+  const zeroBased = year * 12 + (month - 1) + months;
+  const newYear = Math.floor(zeroBased / 12);
+  const newMonth = (zeroBased % 12) + 1;
+  return `${String(newYear).padStart(4, "0")}-${String(newMonth).padStart(2, "0")}-01`;
+}
+
 /**
  * Year-over-year percent change series: (X_t / X_{t-lag} − 1) × 100.
- * `lag` defaults to 12 (monthly series); pass 4 for quarterly.
- * Skips windows where the base observation is missing.
+ * `lag` is a number of periods: 12 for monthly series, 4 for quarterly.
+ *
+ * Base observations are matched BY DATE, not by index: the period length is
+ * inferred from the most common gap between consecutive observations, and a
+ * window whose exact base month is missing (e.g. the skipped Oct 2025
+ * federal releases) is dropped rather than silently stretched to 13 months.
  */
 export function yoyPercentChange(
   observations: Observation[],
   lag = 12,
 ): Observation[] {
+  if (observations.length < 2) return [];
+
+  // Infer calendar months per period (1 = monthly, 3 = quarterly) from the
+  // modal gap, so isolated missing releases don't distort the inference.
+  const gapCounts = new Map<number, number>();
+  for (let i = 1; i < observations.length; i += 1) {
+    const gap = monthsBetween(observations[i - 1][0], observations[i][0]);
+    gapCounts.set(gap, (gapCounts.get(gap) ?? 0) + 1);
+  }
+  const periodMonths = [...gapCounts.entries()].sort((a, b) => b[1] - a[1])[0][0];
+  const windowMonths = periodMonths * lag;
+
+  const valueByDate = new Map(observations);
   const result: Observation[] = [];
-  for (let i = lag; i < observations.length; i += 1) {
-    const [date, value] = observations[i];
-    const [, base] = observations[i - lag];
-    if (base !== 0) {
+  for (const [date, value] of observations) {
+    const base = valueByDate.get(shiftMonths(date, -windowMonths));
+    if (base !== undefined && base !== 0) {
       result.push([date, (value / base - 1) * 100]);
     }
   }

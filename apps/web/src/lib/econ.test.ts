@@ -58,6 +58,31 @@ describe("yoyPercentChange", () => {
     expect(yoy[0][0]).toBe("2025-01-01");
   });
 
+  it("drops windows whose exact base month is missing instead of stretching", () => {
+    // 36 months of 1%/month growth with 2025-10 missing (a skipped federal
+    // release). Values dated exactly 12 months after the gap must be absent —
+    // never computed over a 13-month window.
+    const observations: Observation[] = [];
+    let value = 100;
+    for (let month = 0; month < 36; month += 1) {
+      const year = 2024 + Math.floor(month / 12);
+      const mm = String((month % 12) + 1).padStart(2, "0");
+      const date = `${year}-${mm}-01`;
+      if (date !== "2025-10-01") observations.push([date, value]);
+      value *= 1.01;
+    }
+    const yoy = yoyPercentChange(observations);
+    const dates = yoy.map(([d]) => d);
+    expect(dates).not.toContain("2026-10-01"); // base month is the gap
+    expect(dates).not.toContain("2025-10-01"); // the gap itself
+    expect(dates).toContain("2026-09-01");
+    expect(dates).toContain("2026-11-01");
+    // Every surviving window is a true 12-month comparison.
+    for (const [, growth] of yoy) {
+      expect(growth).toBeCloseTo(12.6825, 3);
+    }
+  });
+
   it("supports quarterly lag", () => {
     const quarterly: Observation[] = [
       ["2025-01-01", 100],
