@@ -19,10 +19,10 @@ paper neutrals.
 | `background` / `surface` / `surface-raised` | Page, card, and inset surfaces |
 | `ink` / `ink-secondary` / `muted` | Three-step text hierarchy |
 | `hairline` / `hairline-strong` | Borders and dividers |
-| `accent` (viridian) | Links, active nav, primary actions — the only brand color |
-| `stale` (amber) | Reserved exclusively for stale-data notices |
-| `good` / `bad` | Used only where welfare interpretation is unambiguous |
-| `chart-1..4` | Categorical chart palette (viridian, ochre, slate, heather) |
+| `accent` (blue) | Links, active nav, primary actions — the only brand color |
+| `stale` (amber) | Reserved exclusively for stale-data notices, so staleness never collides with red signal |
+| `good` (green) / `bad` (red) | Used only where welfare interpretation is unambiguous |
+| `chart-1..4` | Categorical chart palette (blue, red, green, black) |
 
 Rules:
 

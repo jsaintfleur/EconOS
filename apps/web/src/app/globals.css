@@ -3,65 +3,67 @@
 /*
  * EconOS design tokens.
  *
- * Premium, calm, research-driven: warm paper neutrals, a single restrained
- * viridian accent, and an amber reserved exclusively for stale-data notices.
- * Red/green are used only where the welfare interpretation of a change is
- * unambiguous (see docs/economic-methodology.md, "Interpretation rules").
+ * Clean primary palette: white surfaces, black text, blue as the single
+ * brand/action color, with red and green carrying signal (changes, series
+ * distinctions). Amber remains reserved exclusively for stale-data notices
+ * so that signal never collides with red. Red/green change-coloring is still
+ * applied only where the welfare interpretation of a change is unambiguous
+ * (see docs/economic-methodology.md, "Interpretation rules").
  */
 
 :root {
-  --background: #faf9f7;
+  --background: #ffffff;
   --surface: #ffffff;
-  --surface-raised: #f4f2ee;
-  --ink: #201e1a;
-  --ink-secondary: #4f4b43;
-  --muted: #767066;
-  --hairline: #e6e2da;
-  --hairline-strong: #d5d0c5;
+  --surface-raised: #f4f6f8;
+  --ink: #0a0a0a;
+  --ink-secondary: #343a42;
+  --muted: #5b6472;
+  --hairline: #e2e8f0;
+  --hairline-strong: #cbd5e1;
 
-  --accent: #1a6b5e;
-  --accent-strong: #114f45;
-  --accent-soft: #e3efec;
+  --accent: #1d4ed8;
+  --accent-strong: #1e3a8a;
+  --accent-soft: #dbeafe;
 
   --stale: #92610f;
   --stale-soft: #f7ecd8;
 
-  --good: #17663b;
-  --bad: #9c2743;
+  --good: #15803d;
+  --bad: #b91c1c;
 
-  --chart-1: #1a6b5e;
-  --chart-2: #8a5a2c;
-  --chart-3: #45526e;
-  --chart-4: #7d6a94;
-  --chart-grid: #eae7e0;
+  --chart-1: #1d4ed8;
+  --chart-2: #b91c1c;
+  --chart-3: #15803d;
+  --chart-4: #0a0a0a;
+  --chart-grid: #edf1f5;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #161512;
-    --surface: #1e1c19;
-    --surface-raised: #262421;
-    --ink: #ece9e2;
-    --ink-secondary: #bdb8ad;
-    --muted: #8f8a7e;
-    --hairline: #2e2c27;
-    --hairline-strong: #3c3933;
+    --background: #0a0a0a;
+    --surface: #141414;
+    --surface-raised: #1e1e1e;
+    --ink: #f5f5f5;
+    --ink-secondary: #c6c9ce;
+    --muted: #8a8f98;
+    --hairline: #262626;
+    --hairline-strong: #3a3a3a;
 
-    --accent: #4fa392;
-    --accent-strong: #6fbcac;
-    --accent-soft: #1d2f2b;
+    --accent: #60a5fa;
+    --accent-strong: #93c5fd;
+    --accent-soft: #16295b;
 
     --stale: #d1a24b;
     --stale-soft: #2e2717;
 
-    --good: #58a879;
-    --bad: #d0708a;
+    --good: #4ade80;
+    --bad: #f87171;
 
-    --chart-1: #4fa392;
-    --chart-2: #c09159;
-    --chart-3: #8b9ab9;
-    --chart-4: #a692c0;
-    --chart-grid: #26241f;
+    --chart-1: #60a5fa;
+    --chart-2: #f87171;
+    --chart-3: #4ade80;
+    --chart-4: #e5e5e5;
+    --chart-grid: #1f1f1f;
   }
 }
 
