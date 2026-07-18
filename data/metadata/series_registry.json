@@ -1,0 +1,643 @@
+{
+  "$schema_note": "Source of truth for every data series in EconOS. Each entry documents provenance, units, frequency, adjustment, geography, license, plausible value range (validation gate), and known limitations. The ingestion pipeline and the app's Data & Methods page are both driven by this file.",
+  "version": "1.0.0",
+  "retrievalMethod": "FRED public fredgraph.csv endpoint (no API key). All series are republished by FRED from the originating agency listed in `source`.",
+  "series": [
+    {
+      "id": "real_gdp_growth",
+      "sourceId": "A191RL1Q225SBEA",
+      "displayName": "Real GDP growth",
+      "source": "U.S. Bureau of Economic Analysis",
+      "sourceUrl": "https://fred.stlouisfed.org/series/A191RL1Q225SBEA",
+      "frequency": "Q",
+      "unit": "% (SAAR, quarter-over-quarter)",
+      "seasonalAdjustment": "Seasonally adjusted annual rate",
+      "geography": "United States",
+      "transformation": "none (published rate used directly)",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        -40,
+        40
+      ],
+      "limitations": "Advance estimates revise substantially; current-vintage data only."
+    },
+    {
+      "id": "cpi_all",
+      "sourceId": "CPIAUCSL",
+      "displayName": "Consumer Price Index (all items)",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CPIAUCSL",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change for headline inflation",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        600
+      ],
+      "limitations": "Urban consumers only; substitution handled via geometric means within strata."
+    },
+    {
+      "id": "cpi_core",
+      "sourceId": "CPILFESL",
+      "displayName": "Core CPI (ex food & energy)",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CPILFESL",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        600
+      ],
+      "limitations": "Excludes food and energy by design; not a cost-of-living measure for any single household."
+    },
+    {
+      "id": "cpi_food",
+      "sourceId": "CPIUFDSL",
+      "displayName": "CPI: Food",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CPIUFDSL",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        600
+      ],
+      "limitations": "Aggregates food at home and away from home."
+    },
+    {
+      "id": "cpi_energy",
+      "sourceId": "CPIENGSL",
+      "displayName": "CPI: Energy",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CPIENGSL",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        5,
+        600
+      ],
+      "limitations": "Highly volatile; dominated by motor fuel and household energy."
+    },
+    {
+      "id": "cpi_shelter",
+      "sourceId": "CUSR0000SAH1",
+      "displayName": "CPI: Shelter",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CUSR0000SAH1",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        600
+      ],
+      "limitations": "Owner-occupied housing measured via owners' equivalent rent; lags market rents."
+    },
+    {
+      "id": "cpi_medical",
+      "sourceId": "CPIMEDSL",
+      "displayName": "CPI: Medical care",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CPIMEDSL",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        700
+      ],
+      "limitations": "Reflects out-of-pocket and insurer-paid prices; differs from total health spending."
+    },
+    {
+      "id": "rent_primary_residence",
+      "sourceId": "CUSR0000SEHA",
+      "displayName": "CPI: Rent of primary residence",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CUSR0000SEHA",
+      "frequency": "M",
+      "unit": "Index 1982-84=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (urban consumers)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        700
+      ],
+      "limitations": "Stock-of-rents measure; lags new-lease asking rents by design."
+    },
+    {
+      "id": "unemployment_rate",
+      "sourceId": "UNRATE",
+      "displayName": "Unemployment rate",
+      "source": "U.S. Bureau of Labor Statistics (CPS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/UNRATE",
+      "frequency": "M",
+      "unit": "%",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        1,
+        30
+      ],
+      "limitations": "U-3 definition; excludes discouraged and involuntarily part-time workers (see U-6)."
+    },
+    {
+      "id": "unemployed_persons",
+      "sourceId": "UNEMPLOY",
+      "displayName": "Unemployed persons",
+      "source": "U.S. Bureau of Labor Statistics (CPS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/UNEMPLOY",
+      "frequency": "M",
+      "unit": "Thousands of persons",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none; used as denominator of the V/U tightness ratio",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        1000,
+        30000
+      ],
+      "limitations": "Household-survey measure; month-to-month sampling noise."
+    },
+    {
+      "id": "payrolls",
+      "sourceId": "PAYEMS",
+      "displayName": "Total nonfarm payrolls",
+      "source": "U.S. Bureau of Labor Statistics (CES)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/PAYEMS",
+      "frequency": "M",
+      "unit": "Thousands of jobs",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "app computes month-over-month change for headline payroll growth",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        20000,
+        200000
+      ],
+      "limitations": "Subject to two monthly revisions and annual benchmarking."
+    },
+    {
+      "id": "participation_rate",
+      "sourceId": "CIVPART",
+      "displayName": "Labor-force participation rate",
+      "source": "U.S. Bureau of Labor Statistics (CPS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CIVPART",
+      "frequency": "M",
+      "unit": "%",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (age 16+)",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        50,
+        75
+      ],
+      "limitations": "Strongly influenced by population aging; level comparisons across decades need demographic context."
+    },
+    {
+      "id": "avg_hourly_earnings",
+      "sourceId": "CES0500000003",
+      "displayName": "Average hourly earnings (private)",
+      "source": "U.S. Bureau of Labor Statistics (CES)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CES0500000003",
+      "frequency": "M",
+      "unit": "Dollars per hour",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (private nonfarm)",
+      "transformation": "app computes YoY % change for wage growth",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        5,
+        100
+      ],
+      "limitations": "Composition effects: shifts in workforce mix move the average without any individual raise."
+    },
+    {
+      "id": "job_openings",
+      "sourceId": "JTSJOL",
+      "displayName": "Job openings (JOLTS)",
+      "source": "U.S. Bureau of Labor Statistics (JOLTS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/JTSJOL",
+      "frequency": "M",
+      "unit": "Thousands",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (total nonfarm)",
+      "transformation": "none; numerator of the V/U tightness ratio",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        1500,
+        15000
+      ],
+      "limitations": "Openings are a stock of postings, not guaranteed hires; series begins Dec 2000."
+    },
+    {
+      "id": "quits_rate",
+      "sourceId": "JTSQUR",
+      "displayName": "Quits rate (JOLTS)",
+      "source": "U.S. Bureau of Labor Statistics (JOLTS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/JTSQUR",
+      "frequency": "M",
+      "unit": "% of employment",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (total nonfarm)",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        0.5,
+        5
+      ],
+      "limitations": "Voluntary separations only; series begins Dec 2000."
+    },
+    {
+      "id": "hires_rate",
+      "sourceId": "JTSHIR",
+      "displayName": "Hires rate (JOLTS)",
+      "source": "U.S. Bureau of Labor Statistics (JOLTS)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/JTSHIR",
+      "frequency": "M",
+      "unit": "% of employment",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (total nonfarm)",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        1,
+        8
+      ],
+      "limitations": "Series begins Dec 2000."
+    },
+    {
+      "id": "initial_claims",
+      "sourceId": "ICSA",
+      "displayName": "Initial unemployment claims",
+      "source": "U.S. Employment and Training Administration",
+      "sourceUrl": "https://fred.stlouisfed.org/series/ICSA",
+      "frequency": "W",
+      "unit": "Number of claims",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "trimStart": "2000-01-01",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        100000,
+        7000000
+      ],
+      "limitations": "Weekly noise around holidays; administrative rather than survey data."
+    },
+    {
+      "id": "construction_employment",
+      "sourceId": "USCONS",
+      "displayName": "Construction employment",
+      "source": "U.S. Bureau of Labor Statistics (CES)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/USCONS",
+      "frequency": "M",
+      "unit": "Thousands of jobs",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none; used in the rate-transmission association",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        500,
+        12000
+      ],
+      "limitations": "All construction, not residential only; residential detail is a roadmap item."
+    },
+    {
+      "id": "fed_funds",
+      "sourceId": "FEDFUNDS",
+      "displayName": "Federal funds effective rate",
+      "source": "Board of Governors of the Federal Reserve System",
+      "sourceUrl": "https://fred.stlouisfed.org/series/FEDFUNDS",
+      "frequency": "M",
+      "unit": "%",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        0,
+        25
+      ],
+      "limitations": "Monthly average of the effective rate, not the target range."
+    },
+    {
+      "id": "treasury_10y",
+      "sourceId": "DGS10",
+      "displayName": "10-year Treasury yield",
+      "source": "Board of Governors of the Federal Reserve System (H.15)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/DGS10",
+      "frequency": "D",
+      "unit": "%",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "trimStart": "2000-01-01",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        0,
+        20
+      ],
+      "limitations": "Constant-maturity yield; market holidays produce gaps."
+    },
+    {
+      "id": "treasury_2y",
+      "sourceId": "DGS2",
+      "displayName": "2-year Treasury yield",
+      "source": "Board of Governors of the Federal Reserve System (H.15)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/DGS2",
+      "frequency": "D",
+      "unit": "%",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "trimStart": "2000-01-01",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        0,
+        20
+      ],
+      "limitations": "Constant-maturity yield; market holidays produce gaps."
+    },
+    {
+      "id": "yield_spread_10y2y",
+      "sourceId": "T10Y2Y",
+      "displayName": "Yield curve spread (10Y \u2212 2Y)",
+      "source": "Federal Reserve Bank of St. Louis (from H.15)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/T10Y2Y",
+      "frequency": "D",
+      "unit": "percentage points",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "trimStart": "1990-01-01",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        -5,
+        5
+      ],
+      "limitations": "Inversion is a historically useful but imperfect recession signal; timing varies widely."
+    },
+    {
+      "id": "mortgage_30y",
+      "sourceId": "MORTGAGE30US",
+      "displayName": "30-year fixed mortgage rate",
+      "source": "Freddie Mac (Primary Mortgage Market Survey)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/MORTGAGE30US",
+      "frequency": "W",
+      "unit": "%",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "Freddie Mac PMMS, redistributed by FRED; cite Freddie Mac. Non-commercial analytical use.",
+      "plausibleRange": [
+        2,
+        20
+      ],
+      "limitations": "Average offered rate for conforming loans with good credit; individual quotes vary."
+    },
+    {
+      "id": "consumer_sentiment",
+      "sourceId": "UMCSENT",
+      "displayName": "Consumer sentiment",
+      "source": "University of Michigan, Surveys of Consumers",
+      "sourceUrl": "https://fred.stlouisfed.org/series/UMCSENT",
+      "frequency": "M",
+      "unit": "Index 1966:Q1=100",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "University of Michigan; redistributed by FRED. Cite University of Michigan.",
+      "plausibleRange": [
+        40,
+        120
+      ],
+      "limitations": "Survey-based; short-run readings are sensitive to salient prices (gasoline, groceries).",
+      "trimStart": "1978-01-01"
+    },
+    {
+      "id": "retail_sales",
+      "sourceId": "RSAFS",
+      "displayName": "Retail sales (advance, total)",
+      "source": "U.S. Census Bureau",
+      "sourceUrl": "https://fred.stlouisfed.org/series/RSAFS",
+      "frequency": "M",
+      "unit": "Millions of dollars",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        100000,
+        1200000
+      ],
+      "limitations": "Nominal values \u2014 not adjusted for inflation; advance estimates revise."
+    },
+    {
+      "id": "real_pce",
+      "sourceId": "PCEC96",
+      "displayName": "Real personal consumption expenditures",
+      "source": "U.S. Bureau of Economic Analysis",
+      "sourceUrl": "https://fred.stlouisfed.org/series/PCEC96",
+      "frequency": "M",
+      "unit": "Billions of chained 2017 dollars (SAAR)",
+      "seasonalAdjustment": "Seasonally adjusted annual rate",
+      "geography": "United States",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        5000,
+        25000
+      ],
+      "limitations": "Chained-dollar aggregates are non-additive across components."
+    },
+    {
+      "id": "pce_durables",
+      "sourceId": "PCEDG",
+      "displayName": "Consumer spending: durable goods",
+      "source": "U.S. Bureau of Economic Analysis",
+      "sourceUrl": "https://fred.stlouisfed.org/series/PCEDG",
+      "frequency": "M",
+      "unit": "Billions of dollars (SAAR)",
+      "seasonalAdjustment": "Seasonally adjusted annual rate",
+      "geography": "United States",
+      "transformation": "app computes YoY % change; used in rate-transmission association",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        10,
+        4000
+      ],
+      "limitations": "Nominal values; durables are the most rate-sensitive consumption category."
+    },
+    {
+      "id": "housing_starts",
+      "sourceId": "HOUST",
+      "displayName": "Housing starts",
+      "source": "U.S. Census Bureau / HUD",
+      "sourceUrl": "https://fred.stlouisfed.org/series/HOUST",
+      "frequency": "M",
+      "unit": "Thousands of units (SAAR)",
+      "seasonalAdjustment": "Seasonally adjusted annual rate",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        400,
+        3000
+      ],
+      "limitations": "Volatile month to month; 90% confidence interval on monthly change is wide."
+    },
+    {
+      "id": "building_permits",
+      "sourceId": "PERMIT",
+      "displayName": "Building permits",
+      "source": "U.S. Census Bureau / HUD",
+      "sourceUrl": "https://fred.stlouisfed.org/series/PERMIT",
+      "frequency": "M",
+      "unit": "Thousands of units (SAAR)",
+      "seasonalAdjustment": "Seasonally adjusted annual rate",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        400,
+        3000
+      ],
+      "limitations": "Permits lead starts but do not guarantee construction."
+    },
+    {
+      "id": "new_home_sales",
+      "sourceId": "HSN1F",
+      "displayName": "New single-family home sales",
+      "source": "U.S. Census Bureau / HUD",
+      "sourceUrl": "https://fred.stlouisfed.org/series/HSN1F",
+      "frequency": "M",
+      "unit": "Thousands of units (SAAR)",
+      "seasonalAdjustment": "Seasonally adjusted annual rate",
+      "geography": "United States",
+      "transformation": "none",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        200,
+        1500
+      ],
+      "limitations": "New homes only (~10-15% of the market); existing-home sales are NAR-licensed and not redistributed here."
+    },
+    {
+      "id": "median_home_price",
+      "sourceId": "MSPUS",
+      "displayName": "Median sales price of houses sold",
+      "source": "U.S. Census Bureau / HUD",
+      "sourceUrl": "https://fred.stlouisfed.org/series/MSPUS",
+      "frequency": "Q",
+      "unit": "Dollars",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "none; input to the Housing Affordability Index",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        15000,
+        800000
+      ],
+      "limitations": "Mix-sensitive: shifts in which homes sell move the median without price changes."
+    },
+    {
+      "id": "case_shiller_national",
+      "sourceId": "CSUSHPINSA",
+      "displayName": "Case-Shiller national home price index",
+      "source": "S&P Dow Jones Indices (S&P CoreLogic Case-Shiller)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/CSUSHPINSA",
+      "frequency": "M",
+      "unit": "Index Jan 2000=100",
+      "seasonalAdjustment": "Not seasonally adjusted",
+      "geography": "United States",
+      "transformation": "app computes YoY % change",
+      "license": "S&P DJI; redistributed by FRED. Cite S&P Dow Jones Indices. Analytical display use.",
+      "plausibleRange": [
+        50,
+        500
+      ],
+      "limitations": "Repeat-sales method; ~2-month publication lag; NSA series shows seasonal swings."
+    },
+    {
+      "id": "median_family_income",
+      "sourceId": "MEFAINUSA646N",
+      "displayName": "Median family income",
+      "source": "U.S. Census Bureau",
+      "sourceUrl": "https://fred.stlouisfed.org/series/MEFAINUSA646N",
+      "frequency": "A",
+      "unit": "Dollars (nominal)",
+      "seasonalAdjustment": "Not applicable",
+      "geography": "United States",
+      "transformation": "none; input to the Housing Affordability Index",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        1000,
+        250000
+      ],
+      "limitations": "Annual, published with a lag; the app carries the latest value forward and labels the vintage.",
+      "recencyWarnDays": 1100
+    },
+    {
+      "id": "industrial_production",
+      "sourceId": "INDPRO",
+      "displayName": "Industrial production",
+      "source": "Board of Governors of the Federal Reserve System (G.17)",
+      "sourceUrl": "https://fred.stlouisfed.org/series/INDPRO",
+      "frequency": "M",
+      "unit": "Index 2017=100",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        2,
+        200
+      ],
+      "limitations": "Manufacturing, mining, utilities only \u2014 a shrinking share of total output."
+    },
+    {
+      "id": "productivity",
+      "sourceId": "OPHNFB",
+      "displayName": "Labor productivity (nonfarm business)",
+      "source": "U.S. Bureau of Labor Statistics",
+      "sourceUrl": "https://fred.stlouisfed.org/series/OPHNFB",
+      "frequency": "Q",
+      "unit": "Index 2017=100 (output per hour)",
+      "seasonalAdjustment": "Seasonally adjusted",
+      "geography": "United States (nonfarm business)",
+      "transformation": "app computes YoY % change",
+      "license": "Public domain (U.S. federal government work)",
+      "plausibleRange": [
+        20,
+        200
+      ],
+      "limitations": "Quarterly readings are noisy; trends matter more than single quarters."
+    }
+  ]
+}
