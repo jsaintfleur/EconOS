@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+apps/web/.next/
+apps/web/out/
+.next/
+out/
+
+# Production builds
+build/
+dist/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Environment files — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+
+# Test and coverage output
+coverage/
+playwright-report/
+test-results/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+*.log
+
+# Large raw data is never committed — only processed snapshots and metadata
+data/raw/
