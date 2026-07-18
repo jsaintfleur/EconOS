@@ -3,7 +3,7 @@
 **An economic intelligence platform that connects macroeconomic forces to the real-world outcomes experienced by households, workers, businesses, and regions.**
 
 [![CI](https://github.com/jsaintfleur/EconOS/actions/workflows/ci.yml/badge.svg)](https://github.com/jsaintfleur/EconOS/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-1a6b5e.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-1d4ed8.svg)](LICENSE)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)](apps/web/tsconfig.json)
 [![Python](https://img.shields.io/badge/Python-pipelines%20%26%20models-3776ab?logo=python&logoColor=white)](pipelines/)
