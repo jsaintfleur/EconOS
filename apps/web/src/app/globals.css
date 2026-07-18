@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/*
+ * EconOS design tokens.
+ *
+ * Premium, calm, research-driven: warm paper neutrals, a single restrained
+ * viridian accent, and an amber reserved exclusively for stale-data notices.
+ * Red/green are used only where the welfare interpretation of a change is
+ * unambiguous (see docs/economic-methodology.md, "Interpretation rules").
+ */
+
+:root {
+  --background: #faf9f7;
+  --surface: #ffffff;
+  --surface-raised: #f4f2ee;
+  --ink: #201e1a;
+  --ink-secondary: #4f4b43;
+  --muted: #767066;
+  --hairline: #e6e2da;
+  --hairline-strong: #d5d0c5;
+
+  --accent: #1a6b5e;
+  --accent-strong: #114f45;
+  --accent-soft: #e3efec;
+
+  --stale: #92610f;
+  --stale-soft: #f7ecd8;
+
+  --good: #17663b;
+  --bad: #9c2743;
+
+  --chart-1: #1a6b5e;
+  --chart-2: #8a5a2c;
+  --chart-3: #45526e;
+  --chart-4: #7d6a94;
+  --chart-grid: #eae7e0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #161512;
+    --surface: #1e1c19;
+    --surface-raised: #262421;
+    --ink: #ece9e2;
+    --ink-secondary: #bdb8ad;
+    --muted: #8f8a7e;
+    --hairline: #2e2c27;
+    --hairline-strong: #3c3933;
+
+    --accent: #4fa392;
+    --accent-strong: #6fbcac;
+    --accent-soft: #1d2f2b;
+
+    --stale: #d1a24b;
+    --stale-soft: #2e2717;
+
+    --good: #58a879;
+    --bad: #d0708a;
+
+    --chart-1: #4fa392;
+    --chart-2: #c09159;
+    --chart-3: #8b9ab9;
+    --chart-4: #a692c0;
+    --chart-grid: #26241f;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-muted: var(--muted);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-stale: var(--stale);
+  --color-stale-soft: var(--stale-soft);
+  --color-good: var(--good);
+  --color-bad: var(--bad);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Numbers align in tables and metric cards. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Visible focus for keyboard users — accessibility requirement. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Respect reduced-motion preferences globally. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
