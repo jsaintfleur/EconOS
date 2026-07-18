@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 /**
  * Global navigation. Desktop: horizontal bar. Mobile: disclosure menu.
@@ -24,11 +24,6 @@ const NAV_ITEMS = [
 export function SiteNav() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Close the mobile menu on navigation so it never lingers over new content.
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-hairline bg-background/95 backdrop-blur">
@@ -107,6 +102,9 @@ export function SiteNav() {
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}
+                    // Close the menu on navigation so it never lingers over
+                    // the next page's content.
+                    onClick={() => setMenuOpen(false)}
                     className={`block rounded-md px-3 py-2.5 text-sm ${
                       active
                         ? "bg-accent-soft font-medium text-accent-strong"
