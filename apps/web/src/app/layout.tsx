@@ -22,7 +22,7 @@ const newsreader = Newsreader({
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://econos.vercel.app"),
+  metadataBase: new URL("https://econos-sooty.vercel.app"),
   title: {
     default: "EconOS — Economic Intelligence Platform",
     template: "%s · EconOS",

@@ -12,9 +12,18 @@
 - **What might happen next?** — transparent, backtested forecasts with prediction intervals and honest error metrics.
 - **What if conditions change?** — an interest-rate transmission simulator that distinguishes direct calculation from historical association from user assumption.
 
+## Live application
+
+**https://econos-sooty.vercel.app**
+
 ## Status
 
-🚧 **In active development toward v1.0.0.** See [CHANGELOG.md](CHANGELOG.md) and [docs/backlog.md](docs/backlog.md) for progress.
+**Feature-complete v1 candidate in hardening.** All five product layers are
+live: Observatory (overview, inflation, labor, housing), calculators,
+Research Lab (four modules), Forecast Center (three backtested targets), and
+the Interest-Rate Transmission Simulator. See [CHANGELOG.md](CHANGELOG.md)
+and [docs/backlog.md](docs/backlog.md) for the remaining hardening items
+(composite indices, Playwright smoke tests, screenshots, v1.0.0 tag).
 
 ## Architecture
 
