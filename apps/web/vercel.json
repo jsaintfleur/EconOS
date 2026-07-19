@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "econos-sooty.vercel.app" }],
+      "destination": "https://econos.jeanlucs.com/",
+      "permanent": true
+    },
+    {
+      "source": "/:path+",
+      "has": [{ "type": "host", "value": "econos-sooty.vercel.app" }],
+      "destination": "https://econos.jeanlucs.com/:path+",
+      "permanent": true
+    }
+  ]
+}

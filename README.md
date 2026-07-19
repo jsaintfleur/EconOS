@@ -8,7 +8,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6?logo=typescript&logoColor=white)](apps/web/tsconfig.json)
 [![Python](https://img.shields.io/badge/Python-pipelines%20%26%20models-3776ab?logo=python&logoColor=white)](pipelines/)
 
-**Live application: [econos-sooty.vercel.app](https://econos-sooty.vercel.app)**
+**Live application: [econos.jeanlucs.com](https://econos.jeanlucs.com)**
 
 ![EconOS economic overview — sixteen sourced indicators with historical context](docs/screenshots/overview.png)
 
@@ -20,17 +20,17 @@ Inflation, interest rates, employment, and housing shape every paycheck, mortgag
 
 | Layer | Question | Where |
 | --- | --- | --- |
-| **Economic Observatory** | What is happening, what changed, how unusual is it? | [Overview](https://econos-sooty.vercel.app/overview) · [Inflation](https://econos-sooty.vercel.app/inflation) · [Labor](https://econos-sooty.vercel.app/labor) · [Housing](https://econos-sooty.vercel.app/housing) |
+| **Economic Observatory** | What is happening, what changed, how unusual is it? | [Overview](https://econos.jeanlucs.com/overview) · [Inflation](https://econos.jeanlucs.com/inflation) · [Labor](https://econos.jeanlucs.com/labor) · [Housing](https://econos.jeanlucs.com/housing) |
 | **Microeconomic Impact Lab** | Who is affected, and by how much? | Purchasing-power & mortgage calculators, Housing Affordability Index |
-| **Economic Research Lab** | What does theory say — and does the data agree? | [Real wages](https://econos-sooty.vercel.app/research/real-wages) · [Okun's Law](https://econos-sooty.vercel.app/research/okuns-law) · [Beveridge Curve](https://econos-sooty.vercel.app/research/beveridge-curve) · [Rate transmission](https://econos-sooty.vercel.app/research/rate-transmission) |
-| **Forecast Center** | What might happen next, and how sure can we be? | [Forecasts](https://econos-sooty.vercel.app/forecasts) — inflation, unemployment, payrolls |
-| **Transmission Engine** | What would a rate change mean for housing? | [Simulator](https://econos-sooty.vercel.app/simulator) |
+| **Economic Research Lab** | What does theory say — and does the data agree? | [Real wages](https://econos.jeanlucs.com/research/real-wages) · [Okun's Law](https://econos.jeanlucs.com/research/okuns-law) · [Beveridge Curve](https://econos.jeanlucs.com/research/beveridge-curve) · [Rate transmission](https://econos.jeanlucs.com/research/rate-transmission) |
+| **Forecast Center** | What might happen next, and how sure can we be? | [Forecasts](https://econos.jeanlucs.com/forecasts) — inflation, unemployment, payrolls |
+| **Transmission Engine** | What would a rate change mean for housing? | [Simulator](https://econos.jeanlucs.com/simulator) |
 
 ## Why it's built the way it is
 
 EconOS treats analytical honesty as a product feature:
 
-- **Every number is traceable.** Each metric shows its originating agency, series identifier, unit, seasonal adjustment, and observation date. The [Data & Methods center](https://econos-sooty.vercel.app/data) catalogs all 35 series with licenses and known limitations.
+- **Every number is traceable.** Each metric shows its originating agency, series identifier, unit, seasonal adjustment, and observation date. The [Data & Methods center](https://econos.jeanlucs.com/data) catalogs all 35 series with licenses and known limitations.
 - **Uncertainty is visible, and selection is evidence-based.** Forecasts carry empirical 50%/80% prediction intervals derived from 60-origin rolling backtests. Where no model beats the naïve baseline — true for unemployment and payroll growth — the baseline is published and labeled as such, rather than hidden behind a more impressive-sounding model.
 - **Correlation is never dressed up as causation.** The rate-transmission simulator tags every output as a *user assumption*, *direct calculation*, or *historical association* — and flags near-zero-R² associations as near-uninformative.
 - **No fabricated data, ever.** A failed source refresh preserves the last validated snapshot and marks it stale in the UI. Validation gates (schema, date continuity, plausible ranges) run in CI and block bad data from shipping.
