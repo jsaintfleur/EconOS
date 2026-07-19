@@ -1,0 +1,49 @@
+name: Data refresh
+
+# Scheduled snapshot refresh. Every run re-fetches all registered series,
+# validates, regenerates forecast artifacts, and opens a pull request — data
+# changes are always reviewed and versioned, never pushed silently to main.
+#
+# Cadence: weekly (Mondays 12:00 UTC) covers weekly series (mortgage rates,
+# claims) and picks up monthly/quarterly releases within a week of
+# publication. A manual trigger is available for release days.
+
+on:
+  schedule:
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install modeling dependencies
+        run: pip install numpy statsmodels
+      - name: Fetch snapshots
+        run: python3 pipelines/ingest/fetch_fred.py
+      - name: Validate
+        run: python3 pipelines/validate/validate_processed.py
+      - name: Regenerate forecasts
+        run: python3 models/run_forecasts.py
+      - name: Open pull request with refreshed data
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: data/scheduled-refresh
+          title: "data: scheduled snapshot refresh"
+          commit-message: "data: scheduled snapshot refresh"
+          body: |
+            Automated weekly data refresh.
+
+            - Snapshots re-fetched from registered sources and validated.
+            - Forecast artifacts regenerated with the same model version.
+
+            Review the diff for unexpected revisions before merging.
+          delete-branch: true

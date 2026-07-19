@@ -40,3 +40,7 @@ Thumbs.db
 
 # Large raw data is never committed — only processed snapshots and metadata
 data/raw/
+
+# Deploy-time copy of ../../data/processed staged by the Vercel CLI flow
+apps/web/data/
+apps/web/.vercelignore
